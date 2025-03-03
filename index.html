@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ready to Dive In?</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #F3E5F5, #EDE7F6, #FFF3E0);
+      font-family: 'Quicksand', sans-serif;
+      text-align: center;
+      color: #5E548E;
+    }
+
+    h1 {
+      font-size: 5rem !important;
+      font-weight: 800;
+      color: #6D67E4;
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+
+    .button {
+      padding: 1rem 2.5rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+      border-radius: 9999px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    .button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: skewX(-45deg);
+      transition: all 0.5s ease;
+    }
+
+    .button:hover::before {
+      left: 200%;
+    }
+
+    .yes-btn {
+      background: linear-gradient(135deg, #B39DDB, #81D4FA);
+    }
+
+    .abs-yes-btn {
+      background: linear-gradient(135deg, #FFABAB, #FFC478);
+    }
+
+    .yes-btn:hover {
+      background: linear-gradient(135deg, #9575CD, #64B5F6);
+    }
+
+    .abs-yes-btn:hover {
+      background: linear-gradient(135deg, #FF8A80, #FFB74D);
+    }
+
+    img {
+      max-width: 250px !important;
+      width: 100%;
+      border-radius: 1rem;
+      margin-top: 3rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen text-gray-700">
+  <h1>Are you excited ? 😊✨</h1>
+  <div class="flex justify-center space-x-6">
+    <button class="button yes-btn">Yes 👍</button>
+    <button class="button abs-yes-btn">Absolutely Yes 👍👍</button>
+  </div>
+  <img src="sec.jpeg" alt="Excited meme" />
+
+  <script>
+    document.querySelector(".yes-btn").addEventListener("click", function() {
+      window.location.href = "countdown.html";
+    });
+
+    document.querySelector(".abs-yes-btn").addEventListener("click", function() {
+      window.location.href = "countdown.html";
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+

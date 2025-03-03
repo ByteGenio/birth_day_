@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Floral Bliss</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #FFF1F1, #FDEBFF);
+      font-family: 'Quicksand', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+      color: #3A3A3A;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .message {
+      font-size: 1.4rem;
+      line-height: 1.6;
+      color: #5A4E7C;
+      font-weight: 700;
+      max-width: 600px;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeIn 1s forwards ease-in-out;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 12px 20px;
+      border-radius: 12px;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .image-container {
+      margin: 15px 0;
+      opacity: 0;
+      animation: fadeIn 1s 0.5s forwards ease-in-out;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      width: 200px;
+      border-radius: 20px;
+      border: 4px solid #FFB3C1;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .image-container img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .button-container {
+      margin-top: 20px;
+      opacity: 0;
+      animation: fadeIn 1s 1s forwards ease-in-out;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #A9E4D7, #FFB3C1);
+      color: #2F2F2F;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #FF8C94, #FDEBFF);
+      color: #FFFFFF;
+      transform: scale(1.07);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn .arrow {
+      font-size: 1.4rem;
+    }
+
+    /* Falling Petals Effect */
+    @keyframes fall {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    .petal {
+      position: absolute;
+      top: -10vh;
+      width: 25px;
+      height: 25px;
+      background: url('https://cdn-icons-png.flaticon.com/512/990/990570.png') no-repeat center/contain;
+      opacity: 0.9;
+      animation: fall linear infinite;
+    }
+
+    @media (max-width: 480px) {
+      .message {
+        font-size: 1.2rem;
+      }
+
+      .btn {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+      }
+
+      .image-container img {
+        width: 160px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="image-container">
+    <img src="p2.jpeg" alt="Aesthetic pastel-inspired image">
+  </div>
+  <p class="message"> I hope you will finally learn to take care of yourself... Here are some flowers for you. Keep shining and being your amazing self—I believe in you! 🌸✨  
+        
+  </p>
+  <div class="button-container">
+    <button class="btn" onclick="window.location.href='page3.html'">
+      <span class="arrow">Wait there is one more...</span>
+    </button>
+  </div>
+  
+  
+</body>
+</html>
+
+
+
