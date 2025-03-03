@@ -19,27 +19,31 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
       height: 100vh;
-      text-align: center;
       overflow: hidden;
+      text-align: center;
+      animation: bgAnimation 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes bgAnimation {
+      0% { background-position: left top; }
+      100% { background-position: right bottom; }
     }
 
     .container {
       position: relative;
-      width: 90%;
-      max-width: 500px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      z-index: 10;
     }
 
-    .card img {
-      width: 100%;
-      max-width: 450px;
-      border-radius: 15px;
-      box-shadow: 0px 0px 25px rgba(255, 182, 193, 0.7);
-      animation: floatUpDown 4s ease-in-out infinite alternate;
+    .card {
+      position: relative;
+      width: 420px;
+      animation: fadeIn 2s ease-out, floatUpDown 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     @keyframes floatUpDown {
@@ -47,17 +51,25 @@
       100% { transform: translateY(-10px); }
     }
 
+    .card img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0px 0px 25px rgba(255, 182, 193, 0.7);
+    }
+
     /* GIF Styling */
     .gif-container {
       position: absolute;
-      width: 90px; /* Adjusted for both desktop & mobile */
-      height: 90px;
+      width: 140px; /* Slightly increased size */
+      height: 140px;
+      pointer-events: none;
     }
 
     .gif {
       width: 100%;
       height: 100%;
       object-fit: contain;
+      background: none;
       animation: dance 1.5s infinite alternate;
     }
 
@@ -66,25 +78,27 @@
       100% { transform: rotate(10deg); }
     }
 
-    /* Bunny GIF (Top Right) */
+    /* Bunny GIF - Moved to Top Right */
     .bunny {
-      top: -30px;
-      right: -30px;
+      top: -60px;
+      right: -60px;
     }
 
-    /* Pooh GIF (Bottom Left) */
+    /* Pooh GIF - Positioned Bottom Left */
     .pooh {
-      bottom: -30px;
-      left: -30px;
+      bottom: -40px;
+      left: -50px;
     }
 
     /* Floating Balloons */
     .balloon {
       position: absolute;
-      width: 55px;
-      height: 75px;
+      width: 80px;
+      height: 110px;
       border-radius: 50%;
       animation: floatUp 8s linear infinite;
+      z-index: 30;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
       opacity: 0.9;
     }
 
@@ -92,72 +106,47 @@
       content: "";
       position: absolute;
       width: 2px;
-      height: 100px;
+      height: 120px;
       background: #808080;
       top: 100%;
       left: 50%;
     }
 
     @keyframes floatUp {
-      0% { transform: translateY(100vh); }
-      100% { transform: translateY(-20vh); }
+      0% { transform: translateY(100vh) scale(1); opacity: 0.9; }
+      100% { transform: translateY(-20vh) scale(1.1); opacity: 1; }
     }
 
     /* Button Styling */
     .info-button {
-      margin-top: 20px;
-      background: rgba(255, 105, 180, 0.8);
-      border: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(255, 105, 180, 0.7);
+      backdrop-filter: blur(5px);
+      border: 2px solid rgba(255, 255, 255, 0.3);
       color: white;
-      padding: 14px 22px;
+      padding: 14px 20px;
       font-size: 1rem;
-      font-weight: bold;
+      font-weight: 600;
       border-radius: 25px;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(255, 182, 193, 0.4);
+      box-shadow: 0 4px 12px rgba(255, 182, 193, 0.3);
       transition: all 0.3s ease-in-out;
+      z-index: 50;
+      animation: pulse 2s infinite;
     }
 
     .info-button:hover {
       background: linear-gradient(135deg, #92d4e0, #f138b7);
       transform: scale(1.1);
+      box-shadow: 0px 0px 15px rgba(213, 184, 219, 0.527);
     }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .container {
-        width: 95%;
-      }
-
-      .card img {
-        max-width: 350px;
-      }
-
-      .gif-container {
-        width: 70px;
-        height: 70px;
-      }
-
-      .balloon {
-        width: 40px;
-        height: 60px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .card img {
-        max-width: 300px;
-      }
-
-      .gif-container {
-        width: 60px;
-        height: 60px;
-      }
-
-      .info-button {
-        font-size: 0.9rem;
-        padding: 10px 16px;
-      }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
     }
 
   </style>
@@ -177,25 +166,28 @@
       <div class="gif-container pooh">
         <img src="Winnie-The-Pooh-Dance-GIF-Winn-unscreen.gif" alt="Winnie The Pooh" class="gif">
       </div>
-    </div>
 
-    <button class="info-button" id="infoButton">wanna know something 🤭</button>
+    </div>
   </div>
+
+  <button class="info-button" id="infoButton">wanna know something 🤭</button>
 
   <script>
     window.onload = () => {
+      // Trigger confetti effect on page load
       setTimeout(() => {
         confetti({ particleCount: 250, spread: 160, origin: { y: 0.6 } });
       }, 500);
 
       const colors = ["#FFB6C1", "#D8BFD8", "#A7C7E7", "#FFFACD", "#98FF98", "#FF0000", "#FFD700", "#FF69B4", "#800080"];
 
-      for (let i = 0; i < 8; i++) {
+      // Create 10 balloons with fixed size and random position
+      for (let i = 0; i < 10; i++) {
         let balloon = document.createElement("div");
         balloon.className = "balloon";
-        balloon.style.left = Math.random() * 90 + "vw";
-        balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
-        balloon.style.animationDuration = (6 + Math.random() * 4) + "s";
+        balloon.style.left = Math.random() * 100 + "vw";  // Random horizontal position
+        balloon.style.background = colors[Math.floor(Math.random() * colors.length)]; // Random color
+        balloon.style.animationDuration = (5 + Math.random() * 5) + "s"; // Random animation duration
         document.body.appendChild(balloon);
       }
     };
